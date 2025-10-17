@@ -22,6 +22,21 @@ document.addEventListener('DOMContentLoaded', () =>{
         }
     };
 
+    const saveTaskToLocalStorage = () => {
+        const tasks = Array.from(taskList.querySelectorAll('li')).map(li =>({
+            text: li.querySelector('span').textContent,
+            completed: li.querySelector('.checkbox').checked
+        }))
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    };
+
+    const loadTasksFromLocalStorage = () =>{
+        const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        savedTasks.forEach(({ text, completed }) => addTask(text,completed, false));
+        toggleEmptyState();
+        updateProgress();
+    };
+
     const addTask = (text, completed = false, checkCompletion = true) =>{
         
         const taskText = text ||taskInput.value.trim();
@@ -56,25 +71,29 @@ document.addEventListener('DOMContentLoaded', () =>{
             editBtn.style.opacity = isChecked ? '0.5' : '1';
             editBtn.style.pointerEvents = isChecked ? 'none':'auto';
             updateProgress();
-        })
+            saveTaskToLocalStorage();
+        });
         editBtn.addEventListener('click', () => {
             if(!checkbox.checked){
                 taskInput.value = li.querySelector('span').textContent;
                 li.remove();
                 toggleEmptyState();
                 updateProgress(false);
+                saveTaskToLocalStorage();
             }
-        })
+        });
 
         li.querySelector('.delete-btn').addEventListener('click', () => {
             li.remove();
             toggleEmptyState();
             updateProgress();
+            saveTaskToLocalStorage();
         })
         taskList.appendChild(li); 
         taskInput.value='';
         toggleEmptyState();
         updateProgress(checkCompletion);
+        saveTaskToLocalStorage();
     };
     addTaskBtn.addEventListener('click', ()=> addTask());
     taskInput.addEventListener('keypress',(e)=>{
@@ -83,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             addTask();
         }
     });
+    loadTasksFromLocalStorage();
 });
 
 const Confetti = () =>{
