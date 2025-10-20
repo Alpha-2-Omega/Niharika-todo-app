@@ -55,4 +55,7 @@ as part of the **GDG MSIT Society Task**
 ---
 
 
+## 🔗 Preview
 
+Check out the app in action by watching the video demo below:
+[watch the demo](https://drive.google.com/file/d/1nFuA7aWoxMmtonOs69j0T23XUxx6sbH4/view?usp=share_link)
