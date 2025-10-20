@@ -65,7 +65,7 @@ body {
 #progress {
     width: 50%;
     height: 100%;
-    background: rgb(210, 152, 59);
+    background: rgb(236, 176, 79);
     border-radius: 20px;
     transition: width 0.3s ease;
 }
@@ -144,7 +144,7 @@ body {
     padding: 8px 10px;
     border-radius: 30px;
     font-size: 1.2rem;
-    color: white;
+    color: black;
     position: relative;
     transition: box-shadow 0.2s ease;
 }
@@ -184,7 +184,7 @@ body {
 }
 #task-list li.completed span {
     text-decoration: line-through;
-    text-decoration-color: #000; 
+    text-decoration-color: #060606; 
     text-decoration-thickness: 2px; 
     color: #000;
 }
@@ -203,7 +203,7 @@ body {
     color: #554f4f;
     font-size: 0.8rem;
     cursor: pointer;
-    transition: all o.2s ease;
+    transition: all 0.2s ease;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -212,7 +212,7 @@ body {
     transform: scale(1.2);
 }
 .task-buttons .edit-btn{
-    background: rgb(219, 155, 52);
+    background: rgb(247, 182, 78);
 }
 .task-buttons .delete-btn{
     background: #fa6b8c;
